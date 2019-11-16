@@ -131,6 +131,7 @@ func (k *KubernetesApiServiceImpl) CreatePrivilegedPod(nodeName string) (*corev1
 	privilegedContainer := corev1.Container{
 		Name:  "ksniff-privileged",
 		Image: "docker",
+                ImagePullPolicy: corev1.PullIfNotPresent,
 
 		SecurityContext: &corev1.SecurityContext{
 			Privileged: &privileged,
